@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "Eliminar";
+}
+
+<h2>Eliminar</h2>
+
+<p>Datos del Alumno:</p>
+
+
+<div class="row mb-3">
+    <h4> <label for="colFormLabel" class="col-sm-2 col-form-label">ID:</label></h4>
+    <div class="col-sm-15">
+
+        <label id="id" for="colFormLabel" class="col-sm-2 col-form-label">@ViewBag.id</label>
+
+    </div>
+</div>
+<div class="row mb-3">
+    <h4>
+        <label for="colFormLabel" class="col-sm-2 col-form-label">Nombre:</label>
+    </h4>
+    <div class="col-sm-15">
+
+        <label for="colFormLabel" id="nombre" class="col-sm-2 col-form-label">@ViewBag.nombre</label>
+
+    </div>
+</div>
+<div class="row mb-3">
+    <h4>
+        <label for="colFormLabel" class="col-sm-2 col-form-label">Clave:</label>
+    </h4>
+    <div class="col-sm-15">
+
+        <label for="colFormLabel" id="clave" class="col-sm-2 col-form-label">@ViewBag.clave</label>
+
+    </div>
+</div>
+
+
+
+
+@Html.ActionLink("Cancelar", "volver", "Estatus",null, htmlAttributes: new { @class= "btn  btn-danger", @type = "button" })
+<input ID="btnEliminar" type="button" class="btn btn-primary" value="Eliminar" OnClick="eliminar()" />
+
+@*<%--      /*  ///Ventana Modal*/--%>*@
+<div class="modal fade" id="ventanaModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            @*<%--                    {/*///  Encabezado Modal*/}--%>*@
+            <div class="modal-header">
+                <h4 class="modal-title">Encabezado</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!--<%--    {/*-->   <!-- Curepo de la Modal --><!--*/}--%>-->
+            <div class="modal-body" id="mensaje">
+                Cuerpo
+            </div>
+
+            <!--<%--     {/*--><!-- Modal footer --><!--*/}--%>-->
+            <div class="modal-footer">
+                @*<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="Celiminar()">Confirmar</button>*@
+                @Html.ActionLink("Confirmar", "CEliminar", "Estatus", new { id = ViewBag.id }, htmlAttributes: new { @class = "btn btn-primary", @type = "button" })
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    function eliminar() {
+        var concatenarDatos = $("#id").text() + " " + $("#nombre").text() + " " + $("#clave").text();
+
+        $("#mensaje").text("Estas seguro de eliminar a " + concatenarDatos);
+        $("#ventanaModal").modal();
+
+
+    }
+
+
+</script>

@@ -1,0 +1,54 @@
+﻿@using CRUD_MVC.Models;
+
+@model IEnumerable<EntidadesEstatus>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@Html.ActionLink("Crear", "crear", "Estatus", null, htmlAttributes: new { @class = "btn  btn-primary", @type = "button" })
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(m => m.id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(m => m.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(m => m.Clave)
+        </th>
+
+        <th>
+            <label>Recibe tres parametros</label>
+        </th>
+    </tr>
+    @foreach (var val in Model)
+
+    {
+<tr>
+    <th>
+        @Html.DisplayFor(m => val.id)
+    </th>
+    <th>
+        @Html.DisplayFor(m => val.Nombre)
+    </th>
+    <th>
+        @Html.DisplayFor(m => val.Clave)
+    </th>
+
+    <th>
+        @Html.ActionLink("Eliminar", "Eliminar", "Estatus", new { id = val.id, nombre = val.Nombre, clave = val.Clave }, htmlAttributes: new { @class = "btn  btn-danger" })
+
+    </th>
+    <th>
+        @Html.ActionLink("Actualizar", "Actualizar", "Estatus", new { id = val.id, nombre = val.Nombre, clave = val.Clave }, htmlAttributes: new { @class = "btn  btn-warning" })
+
+    </th>
+</tr>
+    }
+
+
+
+</table>
